@@ -6,6 +6,9 @@ class Player
     @name = n
   end
 
+  def to_s
+    "#{name} is #{Prs::CHOICE[choice]}"
+  end
 end
 
 class Human < Player
@@ -15,20 +18,11 @@ class Human < Player
       self.choice = gets.chomp.downcase
     end until Prs::CHOICE.keys.include?(self.choice)
   end
-
-  def to_s
-    "#{self.name} is #{Prs::CHOICE[self.choice]}"
-  end
 end
 
 class Computer < Player
-  
   def pick_hand
     self.choice = Prs::CHOICE.keys.sample
-  end
-
-  def to_s
-    "#{self.name} is #{Prs::CHOICE[self.choice]}"
   end
 end
 
